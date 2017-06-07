@@ -124,7 +124,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="a2e11525c9ceb55e1fbc264523d56f1aefa6677b">
+        sha1="a234664e18232115f5041293678b23eedf0ee8f8">
         <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9d902b43c376df6151361e279ca2aaee8230da12/classes.dex" />
     </item>
 
