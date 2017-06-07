@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/2e9504de58a1672550335ad15235a8900ebf0bf9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_741277a1b7d9751196e6b74e74ca9edbb8adfd79/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/b97d10b9a5e012d1d78461b0c29f82511f4db415/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a24fd8b093e0ee63611edff21c73a8b712faa56b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/dca5b31c6fa745c5f2f8c82708f029e01d64baf2/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ab02d1f47f78c253f9f0b1c1f5353aa713ed3a08/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_76f81077aea9bd1699aabfb9818dc8fa3bde44df/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/7a7aada18f1f1cbe13df14e75766f3d2a5faaaee/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_576c6bdd034004e018dd59c632ac02243fc2024c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/64c7edd0376577589639254ce5815ab0736ca9d1/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_255ed92d7dd3db7e7a7e8fb412e66c83c2c54bf6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/801519a7026460c96969f57f0826fbfbb3acaab4/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e493bc555f994aaa8db1f94edd1066570dfd356c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_71603e9186bae46f98999e0a31ed8167b724c574/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/06c485236427dac9666ac51c423783cb89c3fc10/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_069009ef21cbe03d12f3fff97935960815013f53/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/788c93bc61ff353afb8513792a3fe62abf606cb5/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_39ac2aece488a7bd7ddf9cb00ebcf52d94c07a77/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_85f99fc829d13013046342bcdbbb815c917363c8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/5fd2a9161370c936713097100afc5de10c4207f6/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b61e753a73e4fb9d1d17ff7749bf773ebe708ebd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/.android/build-cache/7756842803de838eb9c1c6dabe4c9578732467e8/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_336f09f0469a79db119fa631aeb06c88be6caa15/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a2e11525c9ceb55e1fbc264523d56f1aefa6677b">
+        <dex dex="/home/looser/Desktop/SSAMultiTask/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9d902b43c376df6151361e279ca2aaee8230da12/classes.dex" />
+    </item>
+
+</items>
