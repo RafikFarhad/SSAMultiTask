@@ -8,4 +8,8 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="send_it_text">Send It to all of them!!!</string>
+    <string name="add_new_member">Add New EC</string>
+    <string name="delete">Delete</string>
+    <string name="details_text">Details</string>
+    <string name="back_text">Back</string>
 </resources>

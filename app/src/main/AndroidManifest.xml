@@ -10,18 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- SPLASH SCREEN ACTIVITY -->
-        <activity
-            android:name="info.androidhive.androidsplashscreentimer.SplashScreen"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <!--&lt;!&ndash; SPLASH SCREEN ACTIVITY &ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name=".SplashScreenActivity"-->
+            <!--android:label="@string/app_name"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@android:style/Theme.Black.NoTitleBar">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
 
         <!-- MAIN ACTIVITY -->
         <activity android:name=".MainActivity">
@@ -44,7 +44,11 @@
             android:name=".SplashScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_splash_screen"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/FullscreenTheme"
+            android:windowSoftInputMode="stateHidden"
+
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
