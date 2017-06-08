@@ -2,32 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        ></include>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:id="@+id/listView" />
+        android:id="@+id/listView"
+        android:layout_below="@+id/tool_bar"
+        android:layout_marginTop="10dp"
+        />
 
     <EditText
         android:id="@+id/the_sms"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/listView"
-        android:layout_marginTop="17dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Write..." />
-
-    <Button
-        android:id="@+id/send_button"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:lines="5"
+        android:gravity="end|left"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="false"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="23dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="55dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="16dp"
-        android:text="@string/send_button_text" />
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,6 +33,11 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
     List<Contact> contacts;
     DatabaseHandler db = new DatabaseHandler(this);
 
+    private Toolbar toolbar;                              // Declaring the Toolbar Object
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,27 +48,30 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
         String message = intent.getStringExtra(EXTRA_MESSAGE);
 
 
+//        TOOLBAR
+
+        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
+        setSupportActionBar(toolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
+
 //        Database
 
-
-
+//
+//
 //        db.deleteAll();
 //
 //        // Inserting Contacts
 //        Log.d("Insert: ", "Inserting ..");
-//        db.addContact(new Contact("Rifat", "9100000000", "President"));
+//        db.addContact(new Contact("Mahir", "9100000000", "President"));
 //        db.addContact(new Contact("Farhad", "9199999999", "Vice President"));
-//        db.addContact(new Contact("Preety", "9522222222", "GS"));
-//        db.addContact(new Contact("Naeem", "9533333333", "OS"));db.addContact(new Contact("Rifat", "9100000000", "President"));
-//        db.addContact(new Contact("Farhad", "9199999999", "Vice President"));
-//        db.addContact(new Contact("Preety", "9522222222", "GS"));
-//        db.addContact(new Contact("Naeem", "9533333333", "OS"));db.addContact(new Contact("Rifat", "9100000000", "President"));
-//        db.addContact(new Contact("Farhad", "9199999999", "Vice President"));
-//        db.addContact(new Contact("Preety", "9522222222", "GS"));
-//        db.addContact(new Contact("Naeem", "9533333333", "OS"));db.addContact(new Contact("Rifat", "9100000000", "President"));
-//        db.addContact(new Contact("Farhad", "9199999999", "Vice President"));
-//        db.addContact(new Contact("Preety", "9522222222", "GS"));
-//        db.addContact(new Contact("Naeem", "9533333333", "OS"));
+//        db.addContact(new Contact("Sadman", "9522222222", "GS"));
+//        db.addContact(new Contact("Ozayer", "9533333333", "OS"));
+//        db.addContact(new Contact("Palak", "9533333333", "OS"));
+//        db.addContact(new Contact("Jakir", "9533333333", "OS"));
+//        db.addContact(new Contact("Raju", "9533333333", "OS"));
+//        db.addContact(new Contact("Fahad", "9533333333", "OS"));
+//        db.addContact(new Contact("Meem", "9533333333", "OS"));
+//        db.addContact(new Contact("Piya", "9533333333", "OS"));
+//        db.addContact(new Contact("Samia", "9533333333", "OS"));
 
         // Reading all contacts
 //        Log.d("Reading: ", "Reading all contacts..");
@@ -91,18 +100,41 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setOnItemClickListener(this);
         listView.setAdapter(customAdapter);
+        listView.setTranscriptMode(ListView.TRANSCRIPT_MODE_NORMAL);
+        listView.setStackFromBottom(true);
 
 
 
     }
+
+//                                TOOLBAR
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.topbar_menu, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.addnew) {
+//            Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_SHORT).show();
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_SHORT).show();
-
     }
-
 
 
     class CustomAdapter extends BaseAdapter{
@@ -130,6 +162,7 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
             TextView textView = (TextView) convertView.findViewById(R.id.textView);
             checkBox.setText(contacts.get(position).getName());
             checkBox.setChecked(visit[position]);
+//            Log.d("TEST", contacts.get(position).getPost());
             textView.setText(contacts.get(position).getPost());
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -190,7 +223,14 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
         {
             Log.d("result", visit[i]? i + " -> YES\n" : i + " NO\n");
         }
-
-
+        Toast.makeText(getApplicationContext(), "Sending text message", Toast.LENGTH_SHORT).show();
     }
+    public void ADD_Button_Pressed(View view) {
+
+        Toast.makeText(getApplicationContext(), "Add People", Toast.LENGTH_SHORT).show();
+    }
+
+
+
+
 }

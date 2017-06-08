@@ -51,6 +51,6 @@ public class Contact {
     }
 
     public void setPost(String post){
-        this._post = _post;
+        this._post = post;
     }
 }
