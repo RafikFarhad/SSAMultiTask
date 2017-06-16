@@ -1,12 +1,22 @@
 package io.github.rafikfarhad.ssamultitask;
 
+import android.Manifest;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TableLayout;
@@ -23,6 +34,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static io.github.rafikfarhad.ssamultitask.MainActivity.EXTRA_MESSAGE;
@@ -32,6 +44,8 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
     boolean visit[] = new boolean[1000];
     List<Contact> contacts;
     DatabaseHandler db = new DatabaseHandler(this);
+    int total = 0;
+    Dialog progress;
 
     private Toolbar toolbar;                              // Declaring the Toolbar Object
 
@@ -42,10 +56,15 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send_page_layout);
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},1);
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         String message = intent.getStringExtra(EXTRA_MESSAGE);
+
+        progress = new Dialog(this);
+        progress.setContentView(R.layout.progress);
+
 
 
 //        TOOLBAR
@@ -54,6 +73,7 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
         setSupportActionBar(toolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
 
 //        Database
+
 
 //
 //
@@ -92,50 +112,27 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
 //        TextView textView = (TextView) findViewById(R.id.mytextview);
 //        textView.setText(message);
         contacts = db.getAllContacts();
-        int total = contacts.size();
+        total = contacts.size();
         int i = 0;
+        visit = new boolean[total+5];
+        for(i=0; i<total; i++)
+        {
+            visit[i] = false;
+        }
 
         ListView listView = (ListView) findViewById(R.id.listView);
-
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setOnItemClickListener(this);
         listView.setAdapter(customAdapter);
         listView.setTranscriptMode(ListView.TRANSCRIPT_MODE_NORMAL);
         listView.setStackFromBottom(true);
 
-
-
     }
-
-//                                TOOLBAR
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.topbar_menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.addnew) {
-//            Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_SHORT).show();
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
-
 
     class CustomAdapter extends BaseAdapter{
 
@@ -162,12 +159,11 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
             TextView textView = (TextView) convertView.findViewById(R.id.textView);
             checkBox.setText(contacts.get(position).getName());
             checkBox.setChecked(visit[position]);
-//            Log.d("TEST", contacts.get(position).getPost());
+            checkBox.setClickable(false);
             textView.setText(contacts.get(position).getPost());
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Toast.makeText(getApplicationContext(), "It's here " + position, Toast.LENGTH_SHORT).show();
                     checkBox.toggle();
                     visit[position]^=true;
                 }
@@ -188,8 +184,27 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
                                 case R.id.delete:
                                     DeleteData(position);
                                     break;
-                                case R.id.detail:
-                                    Toast.makeText(SendMessagePageActivity.this, "your desire action is " + item.toString(), Toast.LENGTH_SHORT).show();
+                                case R.id.detail:{
+                                    final Dialog myDialog = new Dialog(SendMessagePageActivity.this);
+                                    myDialog.setContentView(R.layout.add_pop_up);
+                                    Button save = (Button) myDialog.findViewById(R.id.save_people);
+                                    Button cancel = (Button) myDialog.findViewById(R.id.cancel_people);
+                                    save.setVisibility(View.GONE);
+                                    cancel.setVisibility(View.GONE);
+
+                                    Contact info = contacts.get(position);
+
+                                    EditText name_ = (EditText) myDialog.findViewById(R.id.name_);
+                                    EditText post_ = (EditText) myDialog.findViewById(R.id.post_);
+                                    EditText phone_ = (EditText) myDialog.findViewById(R.id.phone_);
+                                    name_.setText(info.getName());
+                                    post_.setText(info.getPost());
+                                    phone_.setText(info.getPhoneNumber());
+                                    disableEditText(name_);
+                                    disableEditText(post_);
+                                    disableEditText(phone_);
+                                    myDialog.show();
+                                }
                                     break;
                                 default:
                                     Toast.makeText(getApplicationContext(), "It's here " + position, Toast.LENGTH_SHORT).show();
@@ -207,6 +222,15 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
             return convertView;
         }
     }
+    void disableEditText(EditText editText) {
+        editText.setFocusable(false);
+        editText.setEnabled(false);
+        editText.setCursorVisible(false);
+        editText.setKeyListener(null);
+        editText.setBackgroundColor(Color.WHITE);
+        editText.setTextColor(Color.BLACK);
+        editText.setGravity(Gravity.CENTER);
+    }
 
 //    DELETE A SINGLE ENTRY
     public void DeleteData(int position){
@@ -218,19 +242,102 @@ public class SendMessagePageActivity extends AppCompatActivity implements Adapte
 
 
     public void Send_SMS_Button_Pressed(View view) {
+        EditText the_sms = (EditText) findViewById(R.id.the_sms);
+        String smstext = the_sms.getText().toString();
+        int sent = 0;
+        for(int i=0; i<total; i++){
+//            Toast.makeText(getApplicationContext(), "Sent to: " + visit[i], Toast.LENGTH_SHORT).show();
 
-        for(int i=0; i<10; i++)
-        {
-            Log.d("result", visit[i]? i + " -> YES\n" : i + " NO\n");
+            if(visit[i]==true) {
+                String text = smstext.replaceAll("###", contacts.get(i).getName());
+                Toast.makeText(getApplicationContext(), "Sent to: " + contacts.get(i).getName(), Toast.LENGTH_SHORT).show();
+                sent++;
+                Log.d("result", text);
+                sendSMS(contacts.get(i).getPhoneNumber(), text);
+            }
         }
-        Toast.makeText(getApplicationContext(), "Sending text message", Toast.LENGTH_SHORT).show();
+        if(sent==0){
+            Toast.makeText(getApplicationContext(), "No Selecion", Toast.LENGTH_SHORT).show();
+
+        }
+//        Toast.makeText(getApplicationContext(), "Sending text message", Toast.LENGTH_SHORT).show();
     }
+
+    //Sends an SMS message to another device
+
+    private void sendSMS(String phoneNumber, String message) {
+        try{
+            SmsManager sms = SmsManager.getDefault();
+            sms.sendTextMessage(phoneNumber, null, message, null, null);
+        }
+        catch (Exception e){
+            Log.d("Error", e.toString());
+        }
+    }
+
+
+
+
     public void ADD_Button_Pressed(View view) {
 
-        Toast.makeText(getApplicationContext(), "Add People", Toast.LENGTH_SHORT).show();
+        // Create an instance of the dialog fragment and show it
+//        DialogFragment newFragment = new AddPeople();
+//        newFragment.show(this.getSupportFragmentManager(), "missiles");
+        callLoginDialog();
+//        Toast.makeText(getApplicationContext(), "Add People", Toast.LENGTH_SHORT).show();
     }
 
 
+    private void callLoginDialog()
+    {
+        final Dialog myDialog = new Dialog(this);
+        myDialog.setContentView(R.layout.add_pop_up);
+//        myDialog.setCancelable(false);
+        Button save = (Button) myDialog.findViewById(R.id.save_people);
+        Button cancel = (Button) myDialog.findViewById(R.id.cancel_people);
+
+        final EditText name_ = (EditText) myDialog.findViewById(R.id.name_);
+        final EditText post_ = (EditText) myDialog.findViewById(R.id.post_);
+        final EditText phone_ = (EditText) myDialog.findViewById(R.id.phone_);
+        myDialog.show();
+
+        save.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View v)
+            {
+                if(name_.getText().toString().length()==0 || post_.getText().toString().length()==0)
+                {
+                    Toast.makeText(getApplicationContext(), "Empty value not allowed.", Toast.LENGTH_SHORT).show();
+                }
+                else if(phone_.getText().toString().length()<=10)
+                {
+                    Toast.makeText(getApplicationContext(), "Invalid Phone Number", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    db.addContact(new Contact(name_.getText().toString(), phone_.getText().toString(), post_.getText().toString()));
+                    Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                    myDialog.dismiss();
+                    finish();
+                    startActivity(getIntent());
+                }
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View v)
+            {
+//                Toast.makeText(getApplicationContext(), "Cancel People", Toast.LENGTH_SHORT).show();
+                myDialog.dismiss();
+            }
+        });
+
+
+
+    }
 
 
 }

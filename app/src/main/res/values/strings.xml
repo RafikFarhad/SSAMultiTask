@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SUST Science Arena EC</string>
+    <string name="app_name">SUST Science Arena</string>
     <string name="grettings">Hello Farhad</string>
     <string name="send_button_text">Send SMS</string>
     <string name="send_message_text">Send Message</string>

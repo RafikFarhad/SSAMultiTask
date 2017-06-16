@@ -13,22 +13,24 @@
         android:layout_alignParentStart="true"
         android:id="@+id/listView"
         android:layout_below="@+id/tool_bar"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         />
 
     <EditText
         android:id="@+id/the_sms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:lines="5"
+        android:lines="3"
         android:gravity="end|left"
         android:inputType="textMultiLine"
         android:scrollHorizontally="false"
-        android:layout_marginLeft="23dp"
-        android:layout_marginRight="23dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="0dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@color/ColorPrimary"
+        android:padding="5dp"
+        android:text="Hello ###,\n"
+        />
 
 </RelativeLayout>

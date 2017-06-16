@@ -56,5 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
+    public void aboutClicked(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, SendMessagePageActivity.class);
+        String message = "farhad";
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+
+    }
 
 }
